@@ -12,6 +12,16 @@ body, html, #ui, #canvas {
     image-rendering: crisp-edges; 
 }
 
+#exceptText{
+    display: none;
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 100%;
+    text-align: center;
+    font-size: 5cqh;
+}
+
 *{font-family: informal;}
 h2 {width: 100%; text-align: center;}
 
@@ -67,4 +77,13 @@ h2 {width: 100%; text-align: center;}
 @font-face {
     font-family: informal;
     src: url("./resources/fonts/informal.ttf");
+}
+
+@media (orientation: portrait){
+    #canvas, #ui{
+        display: none;
+    }
+    #exceptText{
+        display: block;
+    }
 }
