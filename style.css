@@ -20,12 +20,7 @@ body, html, #ui, #canvas {
     width: 100%;
     text-align: center;
     font-size: 5cqh;
-    color: #aaa;
-    text-shadow: 
-        -5px -5px 0 #000,  
-        5px -5px 0 #000,
-        -5px  5px 0 #000,
-        5px  5px 0 #000;}
+}
 
 *{font-family: informal;}
 h2 {width: 100%; text-align: center;}
@@ -90,5 +85,8 @@ h2 {width: 100%; text-align: center;}
     }
     #exceptText{
         display: block;
+    }
+    body, html{
+        background: #fff !important;
     }
 }
