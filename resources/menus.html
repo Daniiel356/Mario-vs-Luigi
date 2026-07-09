@@ -1,0 +1,24 @@
+<template id="mainMenu">
+    <button id="btnPlay" class="btn1" onclick="setScene(scenes.PLAYMENU)">Jugar</button>
+</template>
+
+<template id="playMenu">
+    <button id="btnDuo" class="btn1" onclick="setScene(scenes.DUOSETTINGS)">Individual</button>
+    <button id="btnMp" class="btn1">Multijugador <span>(en desarrollo)</span></button>
+</template>
+
+<template id="duoSettings">
+    <h2>Configuración</h2>
+    <div class="duoDiv">
+        <label>
+            <span>Nombre: </span><input maxlength="10" placeholder="Luigi" id="p1Name">
+        </label>
+    </div>
+
+    <div class="duoDiv" style="left: 51.25vw">
+        <label>
+            <span>Nombre: </span><input maxlength="10" placeholder="Mario" id="p2Name">
+        </label>
+    </div>
+    <button class="btn1" id="btndouPlay" onclick="initGame();">Jugar</button>
+</template>
