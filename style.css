@@ -12,14 +12,13 @@ body, html, #ui, #canvas {
     image-rendering: crisp-edges; 
 }
 
-#exceptText{
+#except{
     display: none;
     position: absolute;
     left: 50%; top: 50%;
     transform: translateX(-50%) translateY(-50%);
-    width: 100%;
-    text-align: center;
-    font-size: 5cqh;
+    width: 100%; height: 100%;
+    background: #fff;
 }
 
 *{font-family: informal;}
@@ -83,10 +82,7 @@ h2 {width: 100%; text-align: center;}
     #canvas, #ui{
         display: none;
     }
-    #exceptText{
+    #except{
         display: block;
-    }
-    body, html{
-        background: #fff !important;
     }
 }
