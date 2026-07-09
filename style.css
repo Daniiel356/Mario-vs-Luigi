@@ -20,7 +20,7 @@ body, html, #ui, #canvas {
     width: 100%;
     text-align: center;
     font-size: 5cqh;
-    color: white;
+    color: #aaa;
     text-shadow: 
         -5px -5px 0 #000,  
         5px -5px 0 #000,
