@@ -1,4 +1,4 @@
-import { repo } from "../game/game";
+import { repo } from "../game/game.js";
 
 const canvas=document.getElementById("canvas");
 const ctx=canvas.getContext("2d");
