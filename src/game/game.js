@@ -2,7 +2,7 @@ import {World} from "./world.js";
 import {Render, createPlayerFrames} from "../visual/render.js";
 import { Engine } from "./logic.js";
 import { currentScene, scenes } from "../visual/scenes.js";
-
+const repo = window.location.hostname.includes("github.io") ? `/${window.location.pathname.split('/')[1]}` : "";
 class Player{
     x=0;y=0;
     w=90;h=160;
@@ -108,4 +108,4 @@ class Game{
         if(this.#actSecond)setTimeout(()=>this.second(), 190)
     }
 }
-export {Game}
+export {Game, repo}

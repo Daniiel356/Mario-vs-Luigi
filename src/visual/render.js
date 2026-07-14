@@ -1,3 +1,5 @@
+import { repo } from "../game/game";
+
 const canvas=document.getElementById("canvas");
 const ctx=canvas.getContext("2d");
 canvas.width=1600;
@@ -69,7 +71,7 @@ async function createPlayerFrames(color){
     imgCanvas.height=64;
 
     const img=new Image();
-    img.src="./assets/img/player.png";
+    img.src=repo+"/assets/img/player.png";
     await img.decode();
     ctx.drawImage(img, 0, 0);
 

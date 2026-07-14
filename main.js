@@ -1,6 +1,6 @@
 import {scenes, setScene, currentScene} from "./src/visual/scenes.js";
 import {resizeCanvas} from "./src/visual/render.js";
-import {Game} from "./src/game/game.js"
+import {Game, repo} from "./src/game/game.js"
 
 window.setScene=setScene;
 window.scenes=scenes;
@@ -32,7 +32,7 @@ window.initGame=async()=>{
     const color1=calcColor(1), color2=calcColor(2);
     await setScene(scenes.GAME);
 
-    await game.world.loadWorld("./assets/worlds/plataforms.json");
+    await game.world.loadWorld(repo+"/assets/worlds/plataforms.json");
     await game.init({name: name1, color: color1},{name: name2, color: color2});
 }
 
