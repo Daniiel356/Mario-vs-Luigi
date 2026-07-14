@@ -2,7 +2,6 @@ import {scenes, setScene, currentScene} from "./src/visual/scenes.js";
 import {resizeCanvas} from "./src/visual/render.js";
 import {Game} from "./src/game/game.js"
 
-
 window.setScene=setScene;
 window.scenes=scenes;
 
@@ -20,7 +19,7 @@ window.initGame=async()=>{
 
     name1=name1.textContent||"Luigi"; name2=name2.textContent||"Mario";
     document.getElementById("ui").innerHTML="";
-    setScene(-1);
+    setScene(scenes.GAME);
 
     await game.world.loadWorld("./resources/worlds/plataforms.json");
     game.init({name: name1},{name: name2});

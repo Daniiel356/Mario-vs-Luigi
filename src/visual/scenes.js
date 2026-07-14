@@ -3,13 +3,12 @@ const scenes=Object.freeze({
     MENU:"mainMenu",
     PLAYMENU:"playMenu",
     DUOSETTINGS:"duoSettings",
-    GAME:-1
+    GAME:"game"
 });
 let currentScene=scenes.MENU;
 
 async function setScene(scene){
-    if(scene!=-1){
-        document.body.style.background="#fff";
+        document.body.style.background=scene!=scenes.GAME? "#fff":"#000";
         try{
             const res=await fetch("./resources/menus.html");
             const html=await res.text();
@@ -23,9 +22,6 @@ async function setScene(scene){
         }catch(err){
             console.error(`Error al cargar el menu '${scene}': `, err)
         }
-    }else{
-        document.body.style.background="#000";
     }
-}
 
 export {scenes, setScene, currentScene};

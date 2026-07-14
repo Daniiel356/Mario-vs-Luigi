@@ -3,13 +3,18 @@ body, html, #ui, #canvas {
     width: 100%; height: 100%;
     overflow: hidden;
 }
-#ui{ container-type: size;}
+#ui{
+    position: absolute;
+    container-type: size;
+    z-index: 20;
+}
 #canvas{
     position: absolute;
     left: 50%; top: 50%;
     transform: translateX(-50%) translateY(-50%);
     image-rendering: pixelated;
-    image-rendering: crisp-edges; 
+    image-rendering: crisp-edges;
+    z-index: 1;
 }
 
 #except{
@@ -73,6 +78,31 @@ h2 {width: 100%; text-align: center;}
     top: 90vh;
 }
 
+/*GAME*/
+#gameContent{
+    display: none;
+}
+
+.touchPanel{
+    position: absolute;
+    width: 35vw; height: 7vw;
+    left: 2.5vw; top: 70%;
+    display: grid;
+    grid-template-columns: 25% 25% 50%;
+    justify-items: center;
+    &[data-pos="right"]{
+        left: 62.5vw;
+        transform: scaleX(-1);
+    }
+}
+
+.btn2{
+    height: 100%; aspect-ratio: 1/1;
+    border: solid black 2px;
+    background: #aab;
+    opacity: 0.8;
+}
+
 @font-face {
     font-family: informal;
     src: url("./resources/fonts/informal.ttf");
@@ -83,6 +113,12 @@ h2 {width: 100%; text-align: center;}
         display: none;
     }
     #except{
+        display: block;
+    }
+}
+
+@media (pointer: coarse) {
+    #gameContent{
         display: block;
     }
 }

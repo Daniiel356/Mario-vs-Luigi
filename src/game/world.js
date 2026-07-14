@@ -1,5 +1,8 @@
 export class World{
     players={p1: null, p2: null};
+    balls=[];
+    friction=225;
+    g=110;
     #game;
     #json={}
     get cont(){ return this.#json.cont; }
