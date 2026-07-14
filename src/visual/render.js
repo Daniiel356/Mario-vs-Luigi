@@ -3,7 +3,9 @@ const ctx=canvas.getContext("2d");
 canvas.width=1600;
 canvas.height=800;
 ctx.imageSmoothingEnabled = false;
-let scale=0;
+ctx.font="35px 'informal'";
+ctx.textAlign="center";
+ctx.textBaseline="middle";
 
 function resizeCanvas(){
     const width=document.body.clientWidth;
@@ -20,11 +22,11 @@ function resizeCanvas(){
 }
 
 class Render{
-    world;
     #game;
 
     constructor(Game){
         this.#game=Game;
+        
     }
     renderWorld(){
         ctx.save();
@@ -39,9 +41,17 @@ class Render{
     }
     renderPlayer(player){
         ctx.save();
-        ctx.fillStyle="#f00";
-        ctx.fillRect(player.x, player.y, player.w, player.h);
+        const img=player.img;
+        let x=player.moving?player.frame*60:0;
+        if(player.dir==1){
+            ctx.drawImage(img, x, 0, 60, 64, player.x, player.y, player.w, player.h);
+        }else{
+            ctx.translate(player.x+player.w, 0);
+            ctx.scale(-1, 1);
+            ctx.drawImage(img, x, 0, 60, 64, 0, player.y, player.w, player.h);
+        }
         ctx.restore();
+        ctx.fillText(player.name, player.x+player.w/2, player.y-10)
     }
 
     render(){
@@ -51,4 +61,28 @@ class Render{
         this.renderPlayer(this.#game.world.players.p2);
     }
 }
-export {resizeCanvas, Render}
+
+async function createPlayerFrames(color){
+    const imgCanvas=document.createElement("canvas");
+    const ctx=imgCanvas.getContext("2d");
+    imgCanvas.width=240;
+    imgCanvas.height=64;
+
+    const img=new Image();
+    img.src="../../resources/img/player.png";
+    await img.decode();
+    ctx.drawImage(img, 0, 0);
+
+    const imgData=ctx.getImageData(0, 0, 240, 64);
+    const data=imgData.data;
+    for(let px=0; px<data.length; px+=4){
+        if(data[px]==0&&data[px+1]==0&&data[px+2]==255){
+            data[px]=color.r;
+            data[px+1]=color.g;
+            data[px+2]=color.b;
+        }
+    }
+    ctx.putImageData(imgData, 0, 0);
+    return imgCanvas;
+}
+export {resizeCanvas, Render, createPlayerFrames}

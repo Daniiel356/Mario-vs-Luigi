@@ -73,6 +73,20 @@ h2 {width: 100%; text-align: center;}
             width: 10vw;
         }
     }
+    & select{
+        position: absolute;
+        left: 50%; top: 15vh;
+        width: 15vw; height: 4vh;
+        font-size: 3.25vh;
+        transform: translateX(-50%);
+    }
+    & canvas{
+        position: absolute;
+        left: 50%; top: 20vh;
+        transform: translateX(-50%);
+        width: 25vw; height: 25vw;
+        border: solid black 2px;
+    }
 }
 #btndouPlay{
     top: 90vh;

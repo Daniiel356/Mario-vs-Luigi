@@ -14,7 +14,15 @@ export class Engine{
         this.#keys[key]=true;
     }
     keyup=(key)=>{
-        this.#keys[key]=false;
+        if(key!="ALL"){
+            this.#keys[key]=false;
+        }else{
+            console.log("KeyUp");
+            
+            for(let key of Object.keys(this.#keys)){
+                this.#keys[key]=false;
+            }
+        }
     }
 
     update(){
@@ -44,8 +52,17 @@ export class Engine{
         if(type==1)Object.assign(keys, {a:"ArrowLeft", d:"ArrowRight", w:"ArrowUp"});
 
         //define estados
-        if(this.#keys[keys.a]==true)player.vx-=player.v*dt;
-        if(this.#keys[keys.d]==true)player.vx+=player.v*dt; 
+        player.moving=false;
+        if(this.#keys[keys.a]==true){
+            player.vx-=player.v*dt;
+            player.moving=true;
+            player.dir=0;
+        }
+        if(this.#keys[keys.d]==true){
+            player.vx+=player.v*dt;
+            player.moving=true;
+            player.dir=1;
+        }
         
         if(this.#keys[keys.w] && player.canJump){
             player.canJump=false;
@@ -77,6 +94,7 @@ export class Engine{
 
         player.x=Math.min(1600-player.w, Math.max(player.x, 0))
 
+        if(player.jumping)player.canJump=false;
         player.jumping=true;
         const py={...player, y:player.y+player.vy};
         const pg={...player, y:player.y+player.h+player.vy, h:0}
@@ -89,6 +107,7 @@ export class Engine{
                     player.canJump=true;
                     dif.y=block.y-player.y-player.h;
                 }else{
+                    player.canJump=false;
                     if(block.type==2)return;
                     player.vy=0;
                     dif.y=player.y-block.y
@@ -101,8 +120,6 @@ export class Engine{
             player.vy+=this.#game.world.g*dt;
         }
         player.y+=dif.y;
-        
-
         return player;
     }
 
