@@ -69,7 +69,7 @@ async function createPlayerFrames(color){
     imgCanvas.height=64;
 
     const img=new Image();
-    img.src="../../resources/img/player.png";
+    img.src="../../assets/img/player.png";
     await img.decode();
     ctx.drawImage(img, 0, 0);
 

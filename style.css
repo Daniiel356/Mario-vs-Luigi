@@ -119,7 +119,7 @@ h2 {width: 100%; text-align: center;}
 
 @font-face {
     font-family: informal;
-    src: url("./resources/fonts/informal.ttf");
+    src: url("./assets/fonts/informal.ttf");
 }
 
 @media (orientation: portrait){

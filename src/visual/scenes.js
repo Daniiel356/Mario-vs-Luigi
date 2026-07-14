@@ -12,7 +12,7 @@ let currentScene=scenes.MENU;
 async function setScene(scene){
     document.body.style.background=scene!=scenes.GAME? "#fff":"#000";
     try{
-        const res=await fetch("./resources/menus.html");
+        const res=await fetch("./assets/menus.html");
         const html=await res.text();
 
         const parser=new DOMParser();
